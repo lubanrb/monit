@@ -1,0 +1,14 @@
+# Monit control file
+
+# Environment: <%= env_name = "#{stage}.#{project}/#{application}" %>
+# Revision: <%= revision %>
+# Created at <%= Time.now().strftime("%d/%m/%Y %H:%M:%S") %>
+
+set daemon 15 # Poll cycle length in seconds
+
+set pidfile <%= pid_file_path %>
+set statefile <%= state_file_path %>
+set idfile <%= id_file_path %>
+set logfile <%= log_file_path %>
+
+include <%= services_path.join('*.monitrc') %>

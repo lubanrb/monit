@@ -1,0 +1,32 @@
+# This section configures Monit's alert messages
+
+# Configure mail server for alert delivery
+# -------------------------------------------
+# set mailserver smtp.company.com port 25
+#                username "username"
+#                password "password"
+#                using SSL with timeout 5 seconds
+
+# Configure alert receipient(s)
+# -------------------------------------------
+# set alert recipient1@company.com with reminder on 20 cycles
+# set alert recipient2@company.com with reminder on 20 cycles
+
+# Configure alert message format
+# -------------------------------------------
+# set mail-format {
+#   from: Monit Support <monit@$HOST>
+#   subject: [$ACTION][$SERVICE] $DESCRIPTION at $DATE [$HOST]
+#   message: Alert Details:
+#
+#       Date:        $DATE
+#       Action:      $ACTION
+#       Event:       $EVENT
+#       Host:        $HOST
+#       Service:     $SERVICE
+#       Description: $DESCRIPTION
+#
+#   Please refer to Monit Service Manager for more details:
+#
+#   http://$HOST:2812/
+# }

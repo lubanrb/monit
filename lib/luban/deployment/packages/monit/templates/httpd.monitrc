@@ -1,0 +1,6 @@
+# This section configures Monit's web frontend
+
+# set httpd port 2812
+      # signature disable # Hide Monit's httpd server version
+      # allow admin:"password" # Enable basic HTTP authentication
+      # For more security options, please refer to the Monit documentation

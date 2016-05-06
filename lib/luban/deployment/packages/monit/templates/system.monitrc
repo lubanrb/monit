@@ -1,0 +1,11 @@
+# This section configures Monit's system resource monitoring
+
+# check system $HOST
+#   if loadavg(5min) > 4 for 40 cycles then alert
+#   if memory > 80% for 40 cycles then alert
+#   if cpu(user) > 80% for 40 cycles then alert
+#   if cpu(system) > 40% for 40 cycles then alert
+#   if cpu(wait) > 20% for 40 cycles then alert
+
+# check filesystem optfs with path /opt
+#   if space usage > 90% for 60 cycles then alert

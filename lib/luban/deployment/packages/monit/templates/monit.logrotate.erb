@@ -1,0 +1,18 @@
+# Monit logrotate configuration
+
+# Environment: <%= env_name = "#{stage}.#{project}/#{application}" %>
+# Revision: <%= revision %>
+# Created at <%= Time.now().strftime("%d/%m/%Y %H:%M:%S") %>
+
+<%= log_file_path %> {
+  daily
+  missingok
+  rotate 14
+  compress
+  dateext
+  notifempty
+  sharedscripts
+  postrotate
+    [ ! -f <%= pid_file_path %> ] || kill -HUP $(cat <%= pid_file_path %>) 2>/dev/null || true
+  endscript
+}
