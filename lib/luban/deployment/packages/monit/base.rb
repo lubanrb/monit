@@ -4,7 +4,7 @@ module Luban
       class Monit < Luban::Deployment::Service::Base
         apply_to :all do
           before_install do
-            depend_on 'openssl', version: '1.0.2g'
+            depend_on 'openssl', version: '1.0.2h'
           end
         end
 
