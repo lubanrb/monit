@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.1.3 (May 13, 2016)
+
+Minor enhancements: 
+  * Changed to link monit with static SSL library
+
 ## Version 0.1.2 (May 13, 2016)
 
 Minor enhancements:
