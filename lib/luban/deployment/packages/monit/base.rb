@@ -14,6 +14,11 @@ module Luban
 
         protected
 
+        def setup_install_tasks
+          super
+          commands[:install].option :openssl, "OpenSSL version"
+        end
+
         def setup_control_tasks
           super
           undef_task :monitor
