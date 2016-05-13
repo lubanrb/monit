@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.1.2 (May 13, 2016)
+
+Minor enhancements:
+  * Added openssl command-line option to custom openssl version to install/use
+
 ## Version 0.1.1 (May 09, 2016)
 
 Minor enhancements:
