@@ -22,8 +22,7 @@ module Luban
           end
 
           def with_openssl_dir(dir)
-            @configure_opts << "--with-ssl-incl-dir=#{dir.join('include')}"
-            @configure_opts << "--with-ssl-lib-dir=#{dir.join('lib')}"
+            @configure_opts << "--with-ssl-static="#{dir}"
           end
         end
       end
