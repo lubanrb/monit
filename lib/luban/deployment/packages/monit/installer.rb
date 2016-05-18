@@ -22,7 +22,7 @@ module Luban
           end
 
           def with_openssl_dir(dir)
-            @configure_opts << "--with-ssl-static="#{dir}"
+            @configure_opts << "--with-ssl-static=#{dir}"
           end
         end
       end
