@@ -12,6 +12,9 @@ module Luban
           @default_templates_path ||= Pathname.new(File.join(File.dirname(__FILE__), 'templates')).realpath
         end
 
+        service_action :config_test, dispatch_to: :controller
+        service_action :reload_process, dispatch_to: :controller
+
         protected
 
         def setup_install_tasks
@@ -21,8 +24,16 @@ module Luban
 
         def setup_control_tasks
           super
-          undef_task :monitor
-          undef_task :unmonitor
+
+          task :config_test do
+            desc "Syntax check on control file"
+            action! :config_test
+          end
+
+          task :reload do
+            desc "Reload process"
+            action! :reload_process
+          end
         end
       end
     end

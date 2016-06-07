@@ -3,26 +3,34 @@ module Luban
     module Packages
       class Monit
         class Controller < Luban::Deployment::Service::Controller
-          include Configurator::Paths
-
           default_executable 'monit'
 
           def monit_command
-            @monit_command ||= "#{monit_executable} -c #{control_file_path}"
+            @monit_command ||= "#{monit_executable}"
           end
+          alias_method :process_pattern, :monit_command
 
           def process_stopped?
-            check_process! =~ /the monit daemon is not running$/
+            super and check_process! =~ /the monit daemon is not running$/
           end
 
           def process_started?
-            check_process! =~ /^The Monit daemon #{package_major_version} uptime:/
+            super and check_process! =~ /^The Monit daemon #{package_major_version} uptime:/
           end
 
-          undef_method :monitor_process
-          undef_method :unmonitor_process
+          def config_test
+            update_result config_test!
+          end
+
+          def reload_process
+            update_result reload_process!
+          end
 
           protected
+
+          def config_test!
+            capture("#{monit_command} -t 2>&1")
+          end
 
           def start_process!
             capture("#{monit_command} 2>&1")
@@ -34,6 +42,10 @@ module Luban
 
           def check_process!
             capture("#{monit_command} status 2>&1")
+          end
+
+          def reload_process!
+            capture("#{monit_command} reload 2>&1")
           end
         end
       end
