@@ -1,5 +1,14 @@
 # Change log
 
+## Version 0.1.4 (Jun 07, 2016)
+
+Minor enhancements:
+  * Added two new subcommands:
+    * #config_test: Syntax check on config file
+    * #reload: reload monit deamon process
+  * Use "etc" as the default search path for control file
+  * Minor code refactoring
+
 ## Version 0.1.3 (May 13, 2016)
 
 Minor enhancements: 
