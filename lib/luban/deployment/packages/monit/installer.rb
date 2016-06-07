@@ -3,8 +3,6 @@ module Luban
     module Packages
       class Monit
         class Installer < Luban::Deployment::Service::Installer
-          include Configurator::Paths
-
           default_executable 'monit'
 
           def source_repo
@@ -23,6 +21,15 @@ module Luban
 
           def with_openssl_dir(dir)
             @configure_opts << "--with-ssl-static=#{dir}"
+          end
+
+          protected
+
+          def install!
+            super
+            # Symlink 'etc' to the profile path
+            # 'etc' is the default search path for control file
+            ln(profile_path, install_path.join('etc'))
           end
         end
       end
