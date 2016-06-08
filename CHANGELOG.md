@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.1.5 (Jun 08, 2016)
+
+Minor enhancements:
+  * Suport for Monit 5.18
+  * Added a new subcommand, #match, to do process matching based on given regular expression
+
 ## Version 0.1.4 (Jun 07, 2016)
 
 Minor enhancements:
