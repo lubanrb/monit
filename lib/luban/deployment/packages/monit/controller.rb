@@ -15,7 +15,7 @@ module Luban
           end
 
           def process_started?
-            super and check_process! =~ /^The Monit daemon #{package_major_version} uptime:/
+            super and check_process! =~ /^The Monit daemon #{package_major_version} uptime:|^Monit uptime:/
           end
 
           def config_test
@@ -24,6 +24,10 @@ module Luban
 
           def reload_process
             update_result reload_process!
+          end
+
+          def match_process
+            update_result match_process!
           end
 
           protected
@@ -46,6 +50,10 @@ module Luban
 
           def reload_process!
             capture("#{monit_command} reload 2>&1")
+          end
+
+          def match_process!
+            capture("#{monit_command} procmatch #{task.args.pattern} 2>&1")
           end
         end
       end

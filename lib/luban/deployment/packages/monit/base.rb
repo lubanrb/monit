@@ -12,8 +12,9 @@ module Luban
           @default_templates_path ||= Pathname.new(File.join(File.dirname(__FILE__), 'templates')).realpath
         end
 
-        service_action :config_test, dispatch_to: :controller
-        service_action :reload_process, dispatch_to: :controller
+        %i(config_test reload_process match_process).each do |action|
+          service_action action, dispatch_to: :controller
+        end
 
         protected
 
@@ -33,6 +34,12 @@ module Luban
           task :reload do
             desc "Reload process"
             action! :reload_process
+          end
+
+          task :match do
+            desc "Match process"
+            argument :pattern, "Regex for process match"
+            action! :match_process
           end
         end
       end
