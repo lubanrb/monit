@@ -3,12 +3,24 @@ module Luban
     module Packages
       class Monit
         class Controller < Luban::Deployment::Service::Controller
-          default_executable 'monit'
+          module Commands
+            def self.included(base)
+              base.define_executable 'monit'
+            end
 
-          def monit_command
-            @monit_command ||= "#{monit_executable}"
+            def monit_command
+              @monit_command ||= "#{monit_executable}"
+            end
+
+            alias_method :process_pattern, :monit_command
+            alias_method :start_command, :monit_command
+
+            def stop_command
+              @stop_command ||= "#{monit_command} quit"
+            end
           end
-          alias_method :process_pattern, :monit_command
+
+          include Commands
 
           def process_stopped?
             super and check_process! =~ /the monit daemon is not running$/
@@ -34,14 +46,6 @@ module Luban
 
           def config_test!
             capture("#{monit_command} -t 2>&1")
-          end
-
-          def start_process!
-            capture("#{monit_command} 2>&1")
-          end
-
-          def stop_process!
-            capture("#{monit_command} quit 2>&1")
           end
 
           def check_process!

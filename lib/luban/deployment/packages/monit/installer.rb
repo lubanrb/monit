@@ -3,7 +3,7 @@ module Luban
     module Packages
       class Monit
         class Installer < Luban::Deployment::Service::Installer
-          default_executable 'monit'
+          include Controller::Commands
 
           def source_repo
             @source_repo ||= "http://mmonit.com"
