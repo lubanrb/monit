@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.1.7 (Jun 17, 2016)
+
+Bug fixes:
+  * Fixed process matching pattern to grep the correct service process
+
 ## Version 0.1.6 (Jun 16, 2016)
 
 Minor enhancements:
