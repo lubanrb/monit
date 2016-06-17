@@ -12,7 +12,10 @@ module Luban
               @monit_command ||= "#{monit_executable}"
             end
 
-            alias_method :process_pattern, :monit_command
+            def process_pattern
+              @process_pattern ||= "^#{monit_command}"
+            end
+
             alias_method :start_command, :monit_command
 
             def stop_command
