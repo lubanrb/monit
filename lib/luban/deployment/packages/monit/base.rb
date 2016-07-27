@@ -9,7 +9,7 @@ module Luban
         end
 
         def default_templates_path
-          @default_templates_path ||= super(__FILE__)
+          @default_templates_path ||= base_templates_path(__FILE__)
         end
 
         %i(config_test reload_process match_process).each do |action|
