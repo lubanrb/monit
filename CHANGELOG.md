@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.0 (Aug 05, 2016)
+
+Bug fixes:
+  * Changed mechanism for adding default templates path in order to handle templates paths inheritance
+    * As a result, updated gem dependency on Luban to version 0.6.8
+
 ## Version 0.1.9 (Jul 27, 2016)
 
 Bug fixes:
