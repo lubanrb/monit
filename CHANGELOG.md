@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.1 (Aug 18, 2016)
+
+Minor enhancements:
+  * Used #compose_command from Luban to support shell setup commands
+    * As a result, updated gem dependency on Luban to version 0.7.0
+
 ## Version 0.2.0 (Aug 05, 2016)
 
 Bug fixes:
