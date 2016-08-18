@@ -48,19 +48,19 @@ module Luban
           protected
 
           def config_test!
-            capture("#{monit_command} -t 2>&1")
+            capture(compose_command("#{monit_command} -t"))
           end
 
           def check_process!
-            capture("#{monit_command} status 2>&1")
+            capture(compose_command("#{monit_command} status"))
           end
 
           def reload_process!
-            capture("#{monit_command} reload 2>&1")
+            capture(compose_command("#{monit_command} reload"))
           end
 
           def match_process!
-            capture("#{monit_command} procmatch #{task.args.pattern} 2>&1")
+            capture(compose_command("#{monit_command} procmatch #{task.args.pattern}"))
           end
         end
       end
