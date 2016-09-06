@@ -5,6 +5,10 @@ module Luban
         class Installer < Luban::Deployment::Service::Installer
           include Controller::Commands
 
+          def without_pam?
+            task.opts.without_pam
+          end
+
           def source_repo
             @source_repo ||= "http://mmonit.com"
           end
@@ -24,6 +28,11 @@ module Luban
           end
 
           protected
+
+          def configure_build_options
+            super
+            @configure_opts << "--without-pam" if without_pam?
+          end
 
           def install!
             super

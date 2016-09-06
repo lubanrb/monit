@@ -20,6 +20,7 @@ module Luban
 
         def setup_install_tasks
           super
+          commands[:install].switch :without_pam, "Disable PAM support"
           commands[:install].option :openssl, "OpenSSL version"
         end
 
