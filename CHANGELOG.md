@@ -1,5 +1,10 @@
 # Change log
 
+## Version 0.2.2 (Sept 06, 2016)
+
+Minor enhancements:
+  * Added the build option of Monit to disable PAM support (--without-pam)
+
 ## Version 0.2.1 (Aug 18, 2016)
 
 Minor enhancements:
