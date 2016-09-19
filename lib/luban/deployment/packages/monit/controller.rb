@@ -16,10 +16,12 @@ module Luban
               @process_pattern ||= "^#{monit_command}"
             end
 
-            alias_method :start_command, :monit_command
+            def start_command
+              @start_command ||= shell_command(monitor_command)
+            end
 
             def stop_command
-              @stop_command ||= "#{monit_command} quit"
+              @stop_command ||= shell_command("#{monit_command} quit")
             end
           end
 
@@ -48,19 +50,19 @@ module Luban
           protected
 
           def config_test!
-            capture(compose_command("#{monit_command} -t"))
+            capture(shell_command("#{monit_command} -t"))
           end
 
           def check_process!
-            capture(compose_command("#{monit_command} status"))
+            capture(shell_command("#{monit_command} status"))
           end
 
           def reload_process!
-            capture(compose_command("#{monit_command} reload"))
+            capture(shell_command("#{monit_command} reload"))
           end
 
           def match_process!
-            capture(compose_command("#{monit_command} procmatch #{task.args.pattern}"))
+            capture(shell_command("#{monit_command} procmatch #{task.args.pattern}"))
           end
         end
       end
