@@ -1,5 +1,17 @@
 # Change log
 
+## Version 0.2.3 (Sept 19, 2016)
+
+New features:
+  * Added commands to monitor/unmonitor named service
+  * Provided the above commands to other Luban services/apps thru module Monit::Controller::Commands::Public
+    * As a result, bumped up the gem dependency on Luban to version 0.8.1
+
+Minor enhancements:
+  * Refactored the way of composing shell commands
+  * Fixed regular expression to check process start to support Monit 5.19.0
+  * Minor code cleanup
+
 ## Version 0.2.2 (Sept 06, 2016)
 
 Minor enhancements:
