@@ -8,7 +8,8 @@ module Luban
           end
         end
 
-        %i(config_test reload_process match_process).each do |action|
+        %i(config_test match_process monitor_process
+            unmonitor_process reload_process).each do |action|
           service_action action, dispatch_to: :controller
         end
 
@@ -41,6 +42,18 @@ module Luban
             desc "Match process"
             argument :pattern, "Regex for process match"
             action! :match_process
+          end
+
+          task :monitor do
+            desc "Enable monitoring"
+            argument :service_entry, "Servie entry name"
+            action! :monitor_process
+          end
+
+          task :unmonitor do
+            desc "Disable monitoring"
+            argument :service_entry, "Servie entry name"
+            action! :unmonitor_process
           end
         end
       end
