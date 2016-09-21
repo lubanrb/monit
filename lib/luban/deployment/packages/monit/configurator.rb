@@ -3,10 +3,6 @@ module Luban
     module Packages
       class Monit
         class Configurator < Luban::Deployment::Service::Configurator
-          def control_file_name
-            @control_file_name ||= 'monitrc'
-          end
-
           def state_file_path
             @state_file_path ||= pids_path.join(state_file_name)
           end

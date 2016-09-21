@@ -5,16 +5,24 @@ module Luban
         class Controller < Luban::Deployment::Service::Controller
           module Commands
             module Public
+              def monitor_control_file_name
+                @monitor_control_file_name ||= 'monitrc'
+              end
+
+              def monit_command
+                @monit_command ||= "#{monitor_executable} -c #{monitor_control_file_path}"
+              end
+
               def monitor_command(service_entry)
-                @monitor_command ||= shell_command("#{monitor_executable} monitor #{service_entry}")
+                @monitor_command ||= shell_command("#{monit_command} monitor #{service_entry}")
               end
 
               def unmonitor_command(service_entry)
-                @unmonitor_command ||= shell_command("#{monitor_executable} unmonitor #{service_entry}")
+                @unmonitor_command ||= shell_command("#{monit_command} unmonitor #{service_entry}")
               end
 
               def reload_monitor_command
-                @reload_monitor_command ||= shell_command("#{monitor_executable} reload")
+                @reload_monitor_command ||= shell_command("#{monit_command} reload")
               end
             end
 
@@ -23,11 +31,6 @@ module Luban
             def self.included(base)
               base.define_executable 'monit'
             end
-
-            def monit_command
-              @monit_command ||= "#{monit_executable}"
-            end
-            alias_method :monitor_executable, :monit_command
 
             def process_pattern
               @process_pattern ||= "^#{monit_command}"
@@ -43,6 +46,10 @@ module Luban
           end
 
           include Commands
+
+          alias_method :monitor_executable, :monit_executable
+          alias_method :monitor_control_file_path, :control_file_path
+          alias_method :control_file_name, :monitor_control_file_name
 
           def process_stopped?
             super and check_process! =~ /the monit daemon is not running$/
