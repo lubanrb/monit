@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.4 (Sept 21, 2016)
+
+Minor enhancements:
+  * Explicitly specified the Monit control file path instead of the default one
+  * Minor code cleanup
+
 ## Version 0.2.3 (Sept 19, 2016)
 
 New features:
