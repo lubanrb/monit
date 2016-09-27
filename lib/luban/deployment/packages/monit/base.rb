@@ -19,41 +19,43 @@ module Luban
           default_templates_paths.unshift(base_templates_path(__FILE__))
         end
 
-        def setup_install_tasks
+        def setup_provision_tasks
           super
-          commands[:install].switch :without_pam, "Disable PAM support"
-          commands[:install].option :openssl, "OpenSSL version"
+          provision_tasks[:install].switch :without_pam, "Disable PAM support"
+          provision_tasks[:install].option :openssl, "OpenSSL version"
         end
 
         def setup_control_tasks
           super
 
-          task :config_test do
-            desc "Syntax check on control file"
-            action! :config_test
-          end
+          commands[:control].alter do
+            task :config_test do
+              desc "Syntax check on control file"
+              action! :config_test
+            end
 
-          task :reload do
-            desc "Reload process"
-            action! :reload_process
-          end
+            task :reload do
+              desc "Reload process"
+              action! :reload_process
+            end
 
-          task :match do
-            desc "Match process"
-            argument :pattern, "Regex for process match"
-            action! :match_process
-          end
+            task :match do
+              desc "Match process"
+              argument :pattern, "Regex for process match"
+              action! :match_process
+            end
 
-          task :monitor do
-            desc "Enable monitoring"
-            argument :service_entry, "Servie entry name"
-            action! :monitor_process
-          end
+            task :monitor do
+              desc "Enable monitoring"
+              argument :service_entry, "Servie entry name"
+              action! :monitor_process
+            end
 
-          task :unmonitor do
-            desc "Disable monitoring"
-            argument :service_entry, "Servie entry name"
-            action! :unmonitor_process
+            task :unmonitor do
+              desc "Disable monitoring"
+              argument :service_entry, "Servie entry name"
+              action! :unmonitor_process
+            end
           end
         end
       end
