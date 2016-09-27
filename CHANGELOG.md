@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.5 (Sept 28, 2016)
+
+Minor enhancements:
+  * Applied subcommand grouping for better clarity
+    * As a result, bump up gem dependency of Luban to version 0.8.8
+
 ## Version 0.2.4 (Sept 21, 2016)
 
 Minor enhancements:
