@@ -31,6 +31,7 @@ module Luban
           commands[:control].alter do
             task :status do
               desc "Check process status"
+              switch :summary, "Show status summary", short: :s
               argument :service_entry, "Service entry name", required: false
               action! :check_process
             end

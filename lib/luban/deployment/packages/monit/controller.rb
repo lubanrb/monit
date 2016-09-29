@@ -25,8 +25,8 @@ module Luban
                 @reload_monitor_command ||= shell_command("#{monit_command} reload")
               end
 
-              def check_monitor_command(service_entry)
-                @check_monitor_command ||= shell_command("#{monit_command} status #{service_entry}")
+              def check_monitor_command(service_entry, summary: false)
+                shell_command("#{monit_command} #{summary ? :summary : :status} #{service_entry}")
               end
             end
 
@@ -74,7 +74,7 @@ module Luban
           end
 
           def check_process!
-            capture(check_monitor_command(task.args.service_entry))
+            capture(check_monitor_command(task.args.service_entry, summary: task.opts.summary))
           end
 
           def match_process!
