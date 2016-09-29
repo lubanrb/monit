@@ -1,5 +1,12 @@
 # Change log
 
+## Version 0.2.6 (Sept 29, 2016)
+
+Minor enhancements:
+  * Added public control command to perform monitor status checkup by service/application
+    * Added switch #summary for subcommand #status to show short summary on process status
+    * As a result, bump up gem dependency of Luban to version 0.8.10
+
 ## Version 0.2.5 (Sept 28, 2016)
 
 Minor enhancements:
