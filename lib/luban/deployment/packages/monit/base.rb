@@ -29,6 +29,12 @@ module Luban
           super
 
           commands[:control].alter do
+            task :status do
+              desc "Check process status"
+              argument :service_entry, "Service entry name", required: false
+              action! :check_process
+            end
+
             task :config_test do
               desc "Syntax check on control file"
               action! :config_test
