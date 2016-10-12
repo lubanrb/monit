@@ -2,11 +2,15 @@
 
 <%= log_file_path %> {
   daily
+  maxsize 5M
+  maxage 14
+  rotate <%= 14 * 24 * (60 / 10) %>
   missingok
-  rotate 14
   compress
+  compresscmd <%= `which gzip`.chomp %>
   dateext
-  notifempty
+  dateformat -%Y%m%d-%H%M%S
+  olddir archived_logs
   sharedscripts
   postrotate
     [ ! -f <%= pid_file_path %> ] || kill -HUP $(cat <%= pid_file_path %>) 2>/dev/null || true
