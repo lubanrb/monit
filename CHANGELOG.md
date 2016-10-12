@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.7 (Oct 12, 2016)
+
+Minor enhancements:
+  * Updated logrotate configuration
+  * Bump up gem dependency of Luban to version 0.9.0
+
 ## Version 0.2.6 (Sept 29, 2016)
 
 Minor enhancements:
