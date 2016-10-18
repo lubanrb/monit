@@ -41,11 +41,11 @@ module Luban
             end
 
             def start_command
-              @start_command ||= shell_command(monit_command)
+              @start_command ||= shell_command(monit_command, setup: [])
             end
 
             def stop_command
-              @stop_command ||= shell_command("#{monit_command} quit")
+              @stop_command ||= shell_command("#{monit_command} quit", setup: [])
             end
           end
 
