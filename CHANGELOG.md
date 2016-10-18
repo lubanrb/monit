@@ -1,5 +1,11 @@
 # Change log
 
+## Version 0.2.8 (Oct 18, 2016)
+
+Bug fixes:
+  * Do NOT activate the Lubmon environemnt while start/stop Monit
+    * Used raw command instead to start/stop Monit
+
 ## Version 0.2.7 (Oct 12, 2016)
 
 Minor enhancements:
