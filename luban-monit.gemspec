@@ -5,7 +5,7 @@ require 'luban/deployment/packages/monit/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "luban-monit"
-  spec.version       = Luban::Deployment::Packages::Monit::VERSION
+  spec.version       = Luban::Deployment::Packages::MONIT_VERSION
   spec.authors       = ["Rubyist Chi"]
   spec.email         = ["rubyist.chi@gmail.com"]
 
